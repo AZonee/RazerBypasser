@@ -1,0 +1,10 @@
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\bin\Debug\RazerBypasser.exe.config
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\bin\Debug\RazerBypasser.exe
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\bin\Debug\RazerBypasser.pdb
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.csprojAssemblyReference.cache
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.Form1.resources
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.Properties.Resources.resources
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.csproj.GenerateResource.cache
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.csproj.CoreCompileInputs.cache
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.exe
+C:\Users\Zonee\source\repos\RazerBypasser\RazerBypasser\obj\Debug\RazerBypasser.pdb
