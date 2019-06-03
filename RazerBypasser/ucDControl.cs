@@ -39,13 +39,55 @@ namespace RazerBypasser
             }
             string DKMNUMBER = bxSelectKey.SelectedItem.ToString().Split(' ').Last();
 
-            XDocument xdc = XDocument.Load(device.Path + @"\Features\" + device.Profile.ID + @"\762555eb-82f2-4fa6-9741-e009d579f188.xml");
-            Console.WriteLine(device.Path + @"\Features\" + device.Profile.ID + @"\762555eb-82f2-4fa6-9741-e009d579f188.xml");
-            var allmaps = xdc.Elements().First().Elements().First().Elements();
-            var DKM = allmaps.Where(x=> x.Elements("DKMInput").Count() != 0 && x.Elements("IsHyperShift").Count() == 0 && x.Element("DKMInput").Value.StartsWith("DKM_M_0" + DKMNUMBER));
-            // DKM is now the element that we wish to edit.
-            // Now to edit it...
 
+            // WARNING: Trash code below. I'm really bad at XML parsing so this is the abomination you get.
+            XDocument xdc = XDocument.Load(device.Path + @"\Features\" + device.Profile.ID + @"\762555eb-82f2-4fa6-9741-e009d579f188.xml");
+            var allmaps = xdc.Elements().First().Elements().First().Elements();
+            var DKM = allmaps.Where(x=> x.Elements("DKMInput").Count() != 0 && x.Elements("IsHyperShift").Count() == 0 && x.Element("DKMInput").Value.StartsWith("DKM_M_0" + DKMNUMBER)).First();
+
+            // The variable DKM is now the element that we wish to edit.
+            // Tags needed - IsDefault, MappingGroup, InputType, DKMInput, Keygroup(KeyAssignment(Scancode, Virtual Key))
+            // e.g.
+            // <Mapping>
+            //   <IsDefault>false</IsDefault>
+            //   <MappingGroup>Keyboard</MappingGroup>
+            //   <InputType>DKMInput</InputType>
+            //   <DKMInput>DKM_M_01</DKMInput>
+            //   <KeyGroup>
+            //     <KeyAssignment>
+            //       <Scancode>109</Scancode>
+            //       <VirtualKey>133</VirtualKey>
+            //     </KeyAssignment>
+            //   </KeyGroup>
+            // </Mapping>
+            //
+            //
+            // DEFAULT DKM:
+            // <Mapping>
+            //   <MappingGroup>Disable</MappingGroup>
+            //   <InputType>DKMInput</InputType>
+            //   <DKMInput>DKM_M_05</DKMInput>
+            // </Mapping>
+
+            // Creates the Element
+            DKM.Add(new XElement("IsDefault", "false"));
+            DKM.Element("MappingGroup").Value = "Keyboard";
+            XElement KG = new XElement("KeyGroup",
+                new XElement("KeyAssignment",
+                new XElement[] {
+                    new XElement("Scancode", Key.GetKey(bxSelectInput.SelectedItem.ToString()).Scancode),
+                    new XElement("VirtualKey", Key.GetKey(bxSelectInput.SelectedItem.ToString()).VirtualKey)}));
+            DKM.Add(KG);
+            // Stages and saves the full document.
+            DialogResult dr = MessageBox.Show("Changing " + bxSelectKey.SelectedItem.ToString() + " to " + bxSelectInput.SelectedItem.ToString() + ".\nIs this correct?", "Make Change", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
+            {
+                DKM.Document.Save(device.Path + @"\Features\" + device.Profile.ID + @"\762555eb-82f2-4fa6-9741-e009d579f188.xml");
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
         }
     }
 }
