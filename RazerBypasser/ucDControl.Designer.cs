@@ -47,7 +47,6 @@
             this.Controls.Add(this.lblTest);
             this.Name = "ucDControl";
             this.Size = new System.Drawing.Size(776, 244);
-            this.Load += new System.EventHandler(this.ucDControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

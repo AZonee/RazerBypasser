@@ -23,8 +23,8 @@ namespace RazerBypasser
 {
     public partial class frmMain : Form
     {
-        public string DevicesDirectory = "ERROR";
-        public List<Device> Devices = new List<Device>();
+        private string DevicesDirectory = "ERROR";
+        private List<Device> Devices = new List<Device>();
 
         public frmMain()
         {
@@ -95,6 +95,11 @@ namespace RazerBypasser
                     bxDeviceSelect.Items.Add(device.Name);
                 }
             }
+        }
+
+        public void Test()
+        {
+            return;
         }
 
         private void btnSelectDevice_Click(object sender, EventArgs e)

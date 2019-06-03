@@ -45,7 +45,7 @@
             // 
             // btnSelectDevice
             // 
-            this.btnSelectDevice.Location = new System.Drawing.Point(261, 11);
+            this.btnSelectDevice.Location = new System.Drawing.Point(257, 11);
             this.btnSelectDevice.Name = "btnSelectDevice";
             this.btnSelectDevice.Size = new System.Drawing.Size(75, 23);
             this.btnSelectDevice.TabIndex = 2;

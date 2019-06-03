@@ -12,9 +12,13 @@ namespace RazerBypasser
 {
     public partial class ucProfileSelect : UserControl
     {
-        public ucProfileSelect(Device device)
+
+        private Device device;
+
+        public ucProfileSelect(Device d)
         {
             InitializeComponent();
+            device = d;
             foreach (Profile profile in device.Profiles)
             {
                 bxProfileSelect.Items.Add(profile.Name);
@@ -24,13 +28,14 @@ namespace RazerBypasser
         private void btnProfileSelect_Click(object sender, EventArgs e)
         {
             if (bxProfileSelect.SelectedItem == null) return;
-            ucProfileSelect c = new ucProfileSelect(Devices.Where(x => x.Name == (string)bxDeviceSelect.SelectedItem).First())
+            device.Profile = device.Profiles.Where(x => x.Name == (string)bxProfileSelect.SelectedItem).First();
+            ucDControl c = new ucDControl(device)
             {
                 Top = 0,
                 Left = 0
             };
-            frmMain..Controls.Clear();
-            pnlDeviceControl.Controls.Add(c);
+            Parent.Parent.Controls.Find("pnlDeviceControl", false).First().Controls.Clear();
+            Parent.Parent.Controls.Find("pnlDeviceControl", false).First().Controls.Add(c);
         }
     }
 }
