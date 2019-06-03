@@ -117,4 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblTemp.Text" xml:space="preserve">
+    <value>HEY! This is a beta version, it doesn't have anywhere near the full feature set yet.
+It just has the designated macro keys for the Razer Blackwidow Chroma and F13-24.
+Don't worry, the full functionality will give you _all_ the freedoms.</value>
+  </data>
 </root>

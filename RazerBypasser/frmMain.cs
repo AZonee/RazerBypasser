@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 
 // NOTE TO ANYONE READING THIS CODE -
@@ -29,8 +30,8 @@ namespace RazerBypasser
         public frmMain()
         {
             InitializeComponent();
-            Devices.Add(new Device { Name = "TEST OBJECT", Path = "FAKE PATH" });
-            bxDeviceSelect.Items.Add("TEST OBJECT");
+            //Devices.Add(new Device { Name = "TEST OBJECT", Path = "FAKE PATH" });
+            //bxDeviceSelect.Items.Add("TEST OBJECT");
 
 
             // Makes sure that the dependant programs exist.
@@ -95,6 +96,24 @@ namespace RazerBypasser
                     bxDeviceSelect.Items.Add(device.Name);
                 }
             }
+            //
+            // COMMENTED OUT SOMETIMES SO I CAN ACTUALLY USE MY MACROS WHILE TESTING. YELL AT ME IF I FORGET TO UNCOMMENT THIS AND YOU SEE IT.
+            //
+            //DialogResult dr = MessageBox.Show("In order to properly work, we need to shut down Razer Central and Razer Synapse. If you have unsaved changes, save those and come back.", "Shut down Razer Central", MessageBoxButtons.OKCancel);
+            //if (dr == DialogResult.OK)
+            //{
+            //    var prc = Process.GetProcesses().
+            //                     Where(pr => new string[] { "Razer Central", "RazerCentralService", "Razer Synapse Service", "Razer Synapse 3"}.Contains(pr.ProcessName));
+            //
+            //    foreach (var pr in prc)
+            //    {
+            //        pr.Kill();
+            //    }
+            //}
+            //else if (dr == DialogResult.Cancel)
+            //{
+            //    Environment.Exit(1);
+            //}
         }
 
         public void Test()
